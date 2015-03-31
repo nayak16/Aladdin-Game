@@ -23,7 +23,7 @@ class Game(state.State):
         self.player = player.Player()
         Game.player = self.player
         self.hud_manager = state.StateMachine(self, hud.Hud(self, self.player, self.timer))
-        self.background = pygame.image.load("data/images/city.png").convert_alpha()
+        self.background = pygame.image.load("data/images/market.jpg").convert_alpha()
         surface_manager.add(self.player)
         self.music = pygame.mixer.Sound("data/sound/game.wav")
         self.music.play(loops=-1)

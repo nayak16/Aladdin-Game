@@ -14,15 +14,18 @@ class Player(pygame.sprite.DirtySprite):
         super(Player, self).__init__()
         self.display = pygame.display.get_surface()
 
-        frame_1 = pygame.image.load("data/images/ninja_frame1.png").convert_alpha()
-        frame_2 = pygame.image.load("data/images/ninja_frame2.png").convert_alpha()
-        frame_3 = pygame.image.load("data/images/ninja_frame3.png").convert_alpha()
+        frame_1 = pygame.image.load("data/images/a_frame1.png").convert_alpha()
+	# 64 x 128 pixels
+        frame_2 = pygame.image.load("data/images/a_frame2.png").convert_alpha()
+        frame_3 = pygame.image.load("data/images/a_frame3.png").convert_alpha()
+	self.jump_frame = pygame.image.load("data/images/jump.png").convert_alpha()
         self.frame_set = [frame_1, frame_2, frame_3, frame_2]
         self.current_frame = 0
         self.timer = time.clock()
 
         self.image = self.frame_set[self.current_frame]
-        self.rect = pygame.Rect((0, 0), (self.image.get_width(), self.image.get_height()))
+        gap = 10
+        self.rect = pygame.Rect((0, 0), (self.image.get_width(), self.image.get_height() - gap))
         self.pos_x = 0
         self.pos_y = self.display.get_height() - (100 + self.rect.height)
         self.is_jumping = False
@@ -62,10 +65,11 @@ class Player(pygame.sprite.DirtySprite):
         if self.current_jump <= self.max_jump_height and not self.is_falling:
             self.is_jumping = True
             self.current_frame = 0
-            self.image = self.frame_set[self.current_frame]
+	    self.image = self.jump_frame
+            #self.image = self.frame_set[self.current_frame]
             self.pos_y -= 10
             self.dirty = 1
-            self.current_jump += 10
+            self.current_jump += 2
             if self.current_jump >= self.max_jump_height:
                 self.is_falling = True
 

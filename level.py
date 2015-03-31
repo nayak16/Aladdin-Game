@@ -15,7 +15,7 @@ class Level(state.State):
         self.display = pygame.display.get_surface()
         self.current_platforms = []
         self.num_of_platforms = 4
-        self.background = pygame.image.load("data/images/city.png")
+        self.background = pygame.image.load("data/images/market.jpg")
         self.display.blit(self.background, (0, 0))
         self.enter()
 
@@ -31,7 +31,7 @@ class Level(state.State):
 
     def act(self):
         self.check_platforms()
-
+	
         if (len(self.current_platforms) < self.num_of_platforms) \
                 and ((self.current_platforms[-1].pos_x + self.current_platforms[-1].rect.width) <= (self.display.get_width() - random.randint(100, 600))):
             new_platform = platform.Platform("data/images/platform.png")

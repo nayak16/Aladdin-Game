@@ -9,7 +9,7 @@ import surface_manager
 class Title(state.State):
     def __init__(self):
         self.display = pygame.display.get_surface()
-        self.background = pygame.image.load("data/images/city.png")
+        self.background = pygame.image.load("data/images/market.jpg")
         self.font_manager = pygame.font.Font("data/fonts/SEVEMFBR.TTF", 64)
         self.help_font_manager = pygame.font.Font("data/fonts/SEVEMFBR.TTF", 28)
         self.title_font_manager = pygame.font.Font("data/fonts/SEVEMFBR.TTF", 128)

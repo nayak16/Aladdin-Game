@@ -9,7 +9,7 @@ class HighScores(state.State):
     high_scores = []
     def __init__(self, score):
         self.display = pygame.display.get_surface()
-        self.background = pygame.image.load("data/images/city.png")
+        self.background = pygame.image.load("data/images/market.jpg")
         
         if score > 0:
             HighScores.high_scores.append(score)
