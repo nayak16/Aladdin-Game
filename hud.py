@@ -16,7 +16,7 @@ class Hud(state.State):
         Hud.timer = timer
         Hud.game = game
 
-        self.font_manager = pygame.font.Font("data/fonts/SEVEMFBR.TTF", 28)
+        self.font_manager = pygame.font.Font("data/fonts/UKIJMoyQ.ttf", 28)
 
         self.shuriken_element = ShurikenElement(self.font_manager)
         self.fps_element = FPSElement(self.font_manager)
@@ -33,13 +33,13 @@ class ShurikenElement(pygame.sprite.DirtySprite):
     def __init__(self, font_manager):
         super(ShurikenElement, self).__init__()
         self.font_manager = font_manager
-        self.image = self.font_manager.render("SHURIKENS: %d" % Hud.player.shurikens, True, (255, 255, 255))
+        self.image = self.font_manager.render("APPLES: %d" % Hud.player.shurikens, True, (255, 255, 255))
         self.rect = pygame.Rect((0, 0), (self.image.get_width(), self.image.get_height()))
         self.dirty = 1
 
 
     def update(self):
-        self.image =  self.font_manager.render("SHURIKENS: %d" % Hud.player.shurikens, True, (255, 255, 255))
+        self.image =  self.font_manager.render("APPLES: %d" % Hud.player.shurikens, True, (255, 255, 255))
         self.dirty = 1
 
 class FPSElement(pygame.sprite.DirtySprite):
@@ -75,7 +75,7 @@ class ComboElement(pygame.sprite.DirtySprite):
         super(ComboElement, self).__init__()
         self.remove_existing()
         self.display = pygame.display.get_surface()
-        self.font_manager = pygame.font.Font("data/fonts/SEVEMFBR.TTF", 28)
+        self.font_manager = pygame.font.Font("data/fonts/UKIJMoyQ.ttf", 28)
         self.image = self.font_manager.render("COMBO! %d PT. BONUS" % bonus, True, (255, 255, 255))
         self.rect = pygame.Rect((0 - self.image.get_width(), self.image.get_height()*2), (self.image.get_width(), self.image.get_height()))
         self.pos_x = 0 - self.image.get_width()

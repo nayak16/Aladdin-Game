@@ -56,7 +56,7 @@ class Game(state.State):
         
         for event in pygame.event.get():
             if event.type == KEYDOWN:
-                if event.key == K_1:
+                if event.key == K_RSHIFT:
                     self.player.throw_shuriken()
         
         check_for_combo()

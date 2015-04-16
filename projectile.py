@@ -6,7 +6,7 @@ class Projectile(pygame.sprite.DirtySprite):
     def __init__(self, player):
         super(Projectile, self).__init__()
         self.display = pygame.display.get_surface()
-        self.image = pygame.image.load("data/images/shuriken.png").convert_alpha()
+        self.image = pygame.image.load("data/images/apple.png").convert_alpha()
         self.rect = pygame.Rect((0, 0), (self.image.get_width(), self.image.get_height()))
         self.pos_x = player.pos_x + player.rect.width
         self.pos_y = player.pos_y + 50

@@ -17,6 +17,7 @@ class Level(state.State):
         self.num_of_platforms = 4
         self.background = pygame.image.load("data/images/market.jpg")
         self.display.blit(self.background, (0, 0))
+        self.enemy_freq = 0.1
         self.enter()
 
     def enter(self):
@@ -42,7 +43,8 @@ class Level(state.State):
             surface_manager.add(powerup.ShurikenPU())
             self.time_since_last_powerup = time.clock()
 
-        if time.clock() >= self.time_since_last_enemyspawn + .5:
+
+        if time.clock() >= self.time_since_last_enemyspawn + self.enemy_freq:
             surface_manager.add(enemy.Enemy())
             self.time_since_last_enemyspawn = time.clock()
 

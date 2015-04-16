@@ -12,7 +12,7 @@ class Enemy(pygame.sprite.DirtySprite):
         super(Enemy, self).__init__()
         self.display = pygame.display.get_surface()
 
-        enemy_sprite = pygame.image.load("data/images/enemy_frame1.png").convert_alpha()
+        enemy_sprite = pygame.image.load("data/images/enemy.png").convert_alpha()
         self.image = pygame.transform.flip(enemy_sprite, True, False)
         self.rect = pygame.Rect((0, 0), (self.image.get_width(), self.image.get_height()))
         paths = [[1000, -128, -12, 12], [1000, self.display.get_height()+128, -12, -12]]

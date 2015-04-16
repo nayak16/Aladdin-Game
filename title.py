@@ -10,11 +10,11 @@ class Title(state.State):
     def __init__(self):
         self.display = pygame.display.get_surface()
         self.background = pygame.image.load("data/images/market.jpg")
-        self.font_manager = pygame.font.Font("data/fonts/SEVEMFBR.TTF", 64)
-        self.help_font_manager = pygame.font.Font("data/fonts/SEVEMFBR.TTF", 28)
-        self.title_font_manager = pygame.font.Font("data/fonts/SEVEMFBR.TTF", 128)
+        self.font_manager = pygame.font.Font("data/fonts/UKIJMoyQ.ttf", 64)
+        self.help_font_manager = pygame.font.Font("data/fonts/UKIJMoyQ.ttf", 28)
+        self.title_font_manager = pygame.font.Font("data/fonts/UKIJMoyQ.ttf", 128)
 
-        self.title = self.title_font_manager.render("RUN!", True, (255, 255, 255))
+        self.title = self.title_font_manager.render("Aladdin Run!", True, (255, 255, 255))
         self.title_rect = pygame.Rect((self.display.get_width()/2 - self.title.get_width()/2, self.display.get_height()/2 - self.title.get_height()*2),
             (self.title.get_width(), self.title.get_height()))
         self.title_color = "white"
@@ -27,7 +27,7 @@ class Title(state.State):
         self.help_rect = pygame.Rect((self.display.get_width()/2 - self.help.get_width()/2, self.display.get_height()/2),
             (self.help.get_width(), self.help.get_height()))
 
-        self.help_image = pygame.image.load("data/images/instructions.png").convert_alpha()
+        self.help_image = pygame.image.load("data/images/ins.png").convert_alpha()
         self.help_image_rect = pygame.Rect((self.display.get_width()/2 - self.help_image.get_width()/2, self.display.get_height()/2 - self.help_image.get_height()/2), (self.help_image.get_width(), self.help_image.get_height()))
 
         self.exit_game = self.font_manager.render("EXIT", True, (0, 0, 0))
@@ -40,8 +40,9 @@ class Title(state.State):
             
         self.timer = pygame.time.Clock()
 
-        self.music = pygame.mixer.Sound("data/sound/title_highscore.wav")
+        self.music = pygame.mixer.Sound("data/sound/highscore.wav")
         self.music.play(loops=-1)
+        self.flash = 10
 
     def exit(self):
         self.music.stop()
@@ -117,11 +118,14 @@ class Title(state.State):
             self.current_choice = 2
 
     def animate_title(self):
-        if self.title_color == "white":
-            self.title = self.title_font_manager.render("RUN!", True, (0, 0, 0))
+        if self.title_color == "white" and self.flash == 0:
+            self.title = self.title_font_manager.render("Aladdin Run!", True, (0, 0, 0))
             self.title_color = "black"
-        else:
-            self.title = self.title_font_manager.render("RUN!", True, (255, 255, 255))
+            self.flash = 10
+        elif self.flash == 5:
+            self.title = self.title_font_manager.render("Aladdin Run!", True, (255, 255, 255))
             self.title_color = "white"
+
+        self.flash = self.flash - 1
 
         

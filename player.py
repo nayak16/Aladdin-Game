@@ -29,7 +29,7 @@ class Player(pygame.sprite.DirtySprite):
         self.pos_x = 0
         self.pos_y = self.display.get_height() - (100 + self.rect.height)
         self.is_jumping = False
-        self.max_jump_height = 256
+        self.max_jump_height = 50
         self.current_jump = 0
         self.is_falling = True
         self.shurikens = 50
